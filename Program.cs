@@ -15,6 +15,7 @@ IHost host = Host.CreateDefaultBuilder(args)
 
         services.AddSingleton<IRChallan, RChallanService>();
         services.AddSingleton<IRChallanSync, RChallanSyncService>();
+        services.AddSingleton<ISetup, SetupService>();
 
 
         services.AddHostedService<Worker>();

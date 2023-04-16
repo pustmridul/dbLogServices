@@ -8,10 +8,12 @@ namespace dbLogServices
    
         private readonly IRChallan _rChallan;
         private readonly IRChallanSync _rChallanSync;
-        public Worker( IRChallan rChallan, IRChallanSync rChallanSync)
+        private readonly ISetup _setup;
+        public Worker( IRChallan rChallan, IRChallanSync rChallanSync, ISetup setup)
         {
             _rChallan = rChallan;
             _rChallanSync = rChallanSync;
+            _setup = setup;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -21,6 +23,10 @@ namespace dbLogServices
                 var rChallan = _rChallan.RCHALLAN_GetNewRecord();
 
                  _rChallanSync.RchallanSync();
+
+                var shop = _setup.Shop_GetRecord();
+                var shopAck = _setup.Shop_SaveWriteAcknowledege(shop);
+
                 foreach(var r in rChallan)
                 {
                     Log.Information("New RChallan :" + r.BarCode);
