@@ -79,22 +79,7 @@ namespace dbLogServices.Services
 
                 target.CPU = decimal.Round((d.CPU ?? 0) * 100 / 115, 2);
                 target.Qty = d.Qty ?? 0;
-                //if (d.un.UNITTYPE == "SFT")
-                //{
-                //    target.Qty = (((d.SIZE3 * d.SIZE4) / 10000) * d.QTY) * 10.764m;
-                //    target.Qty = TruncateDecimal(target.Qty.Value, 4); ;
-                //    //target.CPU = d.CPU;
-                //    target.CPU = decimal.Round((d.CPU * 100) / 115, 2);//d.CPU;
-                //    //target.Qty = d.QTY * 0.1m;
-                //    //target.CPU = d.CPU * 0.1m;
-                //    //d.UNITTYPE = "SQM";
-                //}
-                //else
-                //{
-                //    target.Qty = d.QTY;
-                //    //target.CPU = d.CPU;  
-                //    target.CPU = decimal.Round((d.CPU * 100) / 115, 2); //d.CPU;
-                //}
+              
                 target.RawMatID = "";
                 target.RD = 0;
                 target.RDPer = 0;

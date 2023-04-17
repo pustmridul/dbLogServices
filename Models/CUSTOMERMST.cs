@@ -50,5 +50,6 @@ namespace dbLogServices.Models
         public decimal? TotalReturn { get; set; }
         public string UserName { get; set; }
         public string ParentID { get; set; }
+        public string VatSync { get; set; }
     }
 }

@@ -9,5 +9,8 @@ namespace dbLogServices.Interfaces
     public interface ISetupSync
     {
         void SyncShopList();
+        void SyncProductList();
+        void SyncVendorList();
+        void SyncCustomerList();
     }
 }
