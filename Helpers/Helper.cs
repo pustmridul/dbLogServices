@@ -24,7 +24,8 @@ namespace dbLogServices.Helpers
             {
                 string uri = _url + endPoint;
                 req = System.Net.WebRequest.Create(uri);
-                req.Headers.Add("Authorization", "Bearer " + StaticData.APIToken);
+                //req.Headers.Add("Authorization", "Bearer " + StaticData.APIToken);
+                req.Headers.Add("Authorization", "Bearer " + GlobalClass.Token);
                 req.Method = "POST";
                 req.ContentType = "application/json; charset=utf-8";
                 req.Timeout = Timeout.Infinite;

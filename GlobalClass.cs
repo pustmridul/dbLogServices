@@ -16,5 +16,7 @@ namespace dbLogServices
         public static string CustomerCode = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["CustomerCode"];
         public static string CustomerMobile = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["CustomerMobile"];
         public static string ShopID = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["ShopID"];
+        public static string Token = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["Token"];
+        public static string StorecodeWithoutEcomm = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build().GetSection("API")["storecodeWithoutEcomm"];
     }
 }

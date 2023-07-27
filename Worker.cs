@@ -9,31 +9,37 @@ namespace dbLogServices
         private readonly IRChallan _rChallan;
         private readonly IRChallanSync _rChallanSync;
         private readonly ISetup _setup;
-        public Worker( IRChallan rChallan, IRChallanSync rChallanSync, ISetup setup)
+        private readonly IProductStockService _productStockService;
+        public Worker( IRChallan rChallan, IRChallanSync rChallanSync, ISetup setup, IProductStockService productStockService)
         {
             _rChallan = rChallan;
             _rChallanSync = rChallanSync;
             _setup = setup;
+            _productStockService = productStockService;
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                var rChallan = _rChallan.RCHALLAN_GetNewRecord();
+                //  var rChallan = _rChallan.RCHALLAN_GetNewRecord();
 
-                 _rChallanSync.RchallanSync();
+                // _rChallanSync.RchallanSync();
 
-                var shop = _setup.Shop_GetRecord();
-                var shopAck = _setup.Shop_SaveWriteAcknowledege(shop);
+                //var shop = _setup.Shop_GetRecord();
+                //var shopAck = _setup.Shop_SaveWriteAcknowledege(shop);
 
-                foreach(var r in rChallan)
-                {
-                    Log.Information("New RChallan :" + r.BarCode);
-                }
+                //var stock =  _productStockService.GetAllProductStock();
+
+                 _productStockService.GetAllDataFIKDAL();
+
+                //foreach(var r in rChallan)
+                //{
+                //    //Log.Information("New RChallan :" + r.BarCode);
+                //}
 
                 
-                await Task.Delay(5*1000, stoppingToken);
+                //await Task.Delay(1000, stoppingToken);
             }
         }
     
